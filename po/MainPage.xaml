@@ -3,36 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="po.MainPage"
              Shell.NavBarIsVisible="False">
-              
-            <Grid>
-                 <!-- Img fundo -->
 
-            <Image Source="fundo.png"
-                   VerticalOptions="Fill"
-                   HorizontalOptions="Fill"/>
+    <Grid>
+        <!-- Img fundo -->
 
-                <!-- Img personagem --> 
+        <Image Source="fundo.png"
+               Aspect="AspectFill"
+               VerticalOptions="Fill"
+               HorizontalOptions="Fill"/>
 
-            <Image Source="cuphed.png"
-                   HeightRequest="50"
-                   WidthRequest="50"
-                   HorizontalOptions="Start"
-                   x:Name="cuphed"/>
+        <!-- Img personagem -->
 
-                <!-- Img postes -->
+        <Image Source="cuphed.png"
+               HeightRequest="50"
+               WidthRequest="120"
+               HorizontalOptions="Start"
+               x:Name="cuphed"/>
 
-            <Image Source=""
-                
+        <!-- Img postes -->
 
+        <Image Source="florcima.png"
+               VerticalOptions="Start"
+               x:Name="FlorAlto"
+               HeightRequest="350"
+               HorizontalOptions="End"/>
 
+        <!-- Img postes -->
 
+        <Image Source="florbaixo.png"
+               x:Name="FlorBaixo"
+               VerticalOptions="EndAndExpand"
+               HeightRequest="350"
+               HorizontalOptions="End"/>
 
+        <!-- Frame game over -->
 
+        <Frame x:Name="GameOverFrame"
+               BackgroundColor="#99000000"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"
+               CornerRadius="0">
 
-        
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="La"/>
+            </Frame.GestureRecognizers>
 
+        </Frame>
 
-
-            </Frame>
-            </Grid>
+    </Grid>
 </ContentPage>
