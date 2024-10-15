@@ -8,9 +8,7 @@
         <!-- Img fundo -->
 
         <Image Source="fundo.png"
-               Aspect="AspectFill"
-               VerticalOptions="Fill"
-               HorizontalOptions="Fill"/>
+               Aspect="Fill"/>
 
         <!-- Img personagem -->
 

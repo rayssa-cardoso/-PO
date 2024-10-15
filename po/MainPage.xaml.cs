@@ -57,10 +57,96 @@ public partial class MainPage : ContentPage
 		FlorAlto.TranslationX -= velocidade;
 		FlorBaixo.TranslationX -= velocidade;
 		if(FlorBaixo.TranslationX < -larguraJanela){
-			FlorBaixo.TranslationX = 20;
-			FlorAlto.TranslationX = 20;
+			FlorBaixo.TranslationX = 40;
+			FlorAlto.TranslationX = 40;
 		}
 	}
+
+	void La (object s , TappedEventArgs e)
+    {
+		GameOverFrame.IsVisible = 0;
+        estaMorto = false;
+		Inicializar();
+		Desenha();
+
+	}
+    
+	void Inicializar()
+	{
+		cuphed.TranslationY = 0;
+	
+	}
+
+	bool VerificaColisaoTeto()
+	{ 
+		var minY=-AlturaJanela/2;
+		if (cuphed.TranslationY >= minY)
+		return true;
+		else
+		return false;
+	}
+    
+	bool VerificaColisaoChao()
+    {
+		var maxY=AlturaJanela/2;
+		if(cuphed.TranslationY >=maxY)
+        return true;
+		else
+		return false;
+	}
+    
+	bool VerificaColisao()
+	{ 
+		if
+
+
+
+
+	}
+	
+
+
+
+
+	}
+
+
+         
+
+
+
+
+	 }
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
