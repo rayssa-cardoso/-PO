@@ -4,49 +4,53 @@
              x:Class="po.MainPage"
              Shell.NavBarIsVisible="False">
 
-    <Grid>
-        <!-- Img fundo -->
+       <Grid>
+              <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnGridClicked"/>
+              </Grid.GestureRecognizers>
+              <!-- Img fundo -->
 
-        <Image Source="fundo.png"
-               Aspect="Fill"/>
+              <Image Source="fundo.png"
+                     Aspect="Fill"/>
 
-        <!-- Img personagem -->
+              <!-- Img personagem -->
 
-        <Image Source="cuphed.png"
-               HeightRequest="50"
-               WidthRequest="120"
-               HorizontalOptions="Start"
-               x:Name="cuphed"/>
+              <Image Source="cup.png"
+                     HeightRequest="50"
+                     WidthRequest="120"
+                     HorizontalOptions="Start"
+                     x:Name="cuphed"/>
 
-        <!-- Img postes -->
+              <!-- Img postes -->
 
-        <Image Source="florcima.png"
-               VerticalOptions="Start"
-               x:Name="FlorAlto"
-               HeightRequest="350"
-               HorizontalOptions="End"/>
+              <Image Source="florcima.png"
+                     VerticalOptions="Start"
+                     x:Name="FlorAlto"
+                     HeightRequest="350"
+                     HorizontalOptions="End"/>
 
-        <!-- Img postes -->
+              <!-- Img postes -->
 
-        <Image Source="florbaixo.png"
-               x:Name="FlorBaixo"
-               VerticalOptions="EndAndExpand"
-               HeightRequest="350"
-               HorizontalOptions="End"/>
+              <Image Source="florbaixo.png"
+                     x:Name="FlorBaixo"
+                     VerticalOptions="EndAndExpand"
+                     HeightRequest="350"
+                     HorizontalOptions="End"/>
 
-        <!-- Frame game over -->
+              <!-- Frame game over -->
 
-        <Frame x:Name="GameOverFrame"
-               BackgroundColor="#99000000"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill"
-               CornerRadius="0">
+              <Frame x:Name="GameOverFrame"
+                     BackgroundColor="#99000000"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     CornerRadius="0">
 
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="La"/>
-            </Frame.GestureRecognizers>
+                     <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGameOverClicked"/>
+                     </Frame.GestureRecognizers>
 
-        </Frame>
+                     <Image Source="game.png"/>
 
-    </Grid>
+              </Frame>
+       </Grid>
 </ContentPage>
