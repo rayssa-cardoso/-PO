@@ -10,13 +10,13 @@ public partial class MainPage : ContentPage
 
 	bool estaMorto = true;
 	bool estaPulando = false;
-	
+
 	int velocidade = 20;
 	int tempoPulando = 0;
-	
+
 	double LarguraJanela;
 	double AlturaJanela;
-	
+
 	public MainPage()
 	{
 		InitializeComponent();
@@ -33,11 +33,12 @@ public partial class MainPage : ContentPage
 		while (!estaMorto)
 		{
 			GerenciarCanos();
-			if(estaPulando)
+			if (estaPulando)
 				AplicaPulo();
 			else
 				AplicaGravidade();
-			if(VerificaColisao()){
+			if (VerificaColisao())
+			{
 				estaMorto = true;
 				GameOverFrame.IsVisible = true;
 				break;
@@ -46,13 +47,13 @@ public partial class MainPage : ContentPage
 		}
 	}
 
-	
+
 	void Inicializar()
 	{
 		cuphed.TranslationY = 0;
 		estaMorto = false;
-		FlorAlto.TranslationX=0;
-		FlorBaixo.TranslationX=0;
+		FlorAlto.TranslationX = 0;
+		FlorBaixo.TranslationX = 0;
 	}
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -67,46 +68,46 @@ public partial class MainPage : ContentPage
 		FlorAlto.TranslationX -= velocidade;
 		FlorBaixo.TranslationX -= velocidade;
 
-		if(FlorBaixo.TranslationX < -LarguraJanela)
+		if (FlorBaixo.TranslationX < -LarguraJanela)
 		{
 			FlorBaixo.TranslationX = 40;
 			FlorAlto.TranslationX = 40;
 		}
 	}
 
-	void OnGameOverClicked (object s , TappedEventArgs e)
-    {
-		GameOverFrame.IsVisible = false ;
+	void OnGameOverClicked(object s, TappedEventArgs e)
+	{
+		GameOverFrame.IsVisible = false;
 		Inicializar();
 		Desenha();
 	}
-    
+
 	bool VerificaColisaoTeto()
-	{ 
-		var minY=-AlturaJanela/2;
+	{
+		var minY = -AlturaJanela / 2;
 		if (cuphed.TranslationY <= minY)
 			return true;
 		else
 			return false;
 	}
-    
+
 	bool VerificaColisaoChao()
-    {
-		var maxY=AlturaJanela/2;
-		if(cuphed.TranslationY >=maxY)
-        return true;
+	{
+		var maxY = AlturaJanela / 2;
+		if (cuphed.TranslationY >= maxY)
+			return true;
 		else
-		return false;
+			return false;
 	}
-    
+
 	bool VerificaColisao()
 	{
-		if(!estaMorto)
+		if (!estaMorto)
 		{
-			if(VerificaColisaoTeto() || VerificaColisaoChao())
-		{
-			return true;
-		}
+			if (VerificaColisaoTeto() || VerificaColisaoChao())
+			{
+				return true;
+			}
 		}
 		return false;
 	}
@@ -126,6 +127,19 @@ public partial class MainPage : ContentPage
 	void OnGridClicked(object s, TappedEventArgs args)
 	{
 		estaPulando = true;
+	}
+
+	bool VerificaColisaoCanoCima()
+	{
+		var minY = AlturaJanela / 2;
+		var posHPardal = (LarguraJanela / 2) - (cuphed.WidthRequest / 2);
+		var posVPardal = (AlturaJanela / 2) - (cuphed.HeightRequest / 2) + cuphed.TranslationY;
+		if (posHPardal >= Math.Abs(CanoCima.TranslationX) - CanoCima.WidthRequest &&
+		 posHPardal >= Math.Abs(CanoCima.TranslationX) - CanoCima.WidthRequest &&)
+
+
+
+
 	}
 }
 
