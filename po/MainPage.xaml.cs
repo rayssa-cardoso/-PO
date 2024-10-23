@@ -13,6 +13,7 @@ public partial class MainPage : ContentPage
 
 	int velocidade = 20;
 	int tempoPulando = 0;
+	int score = 0;
 
 	double LarguraJanela;
 	double AlturaJanela;
@@ -73,6 +74,9 @@ public partial class MainPage : ContentPage
 			FlorBaixo.TranslationX = 40;
 			FlorAlto.TranslationX = 40;
 		}
+		score++;
+		if (score % 2 ==0)
+		velocidade++;
 	}
 
 	void OnGameOverClicked(object s, TappedEventArgs e)
@@ -134,12 +138,41 @@ public partial class MainPage : ContentPage
 		var minY = AlturaJanela / 2;
 		var posHPardal = (LarguraJanela / 2) - (cuphed.WidthRequest / 2);
 		var posVPardal = (AlturaJanela / 2) - (cuphed.HeightRequest / 2) + cuphed.TranslationY;
-		if (posHPardal >= Math.Abs(CanoCima.TranslationX) - CanoCima.WidthRequest &&
-		 posHPardal >= Math.Abs(CanoCima.TranslationX) - CanoCima.WidthRequest &&)
+		if (posHPardal >= Math.Abs(FlorAlto.TranslationX) - FlorAlto.WidthRequest &&
+		 posHPardal >= Math.Abs(FlorAlto.TranslationX) - FlorAlto.WidthRequest &&
+		 posHPardal <= FlorAlto.HeightRequest + cuphed.TranslationY);
+	{
+         return true;
+	}
 
-
-
+    else
+	{
+       return false; 
+	}
+		
+	}
+     bool VerificaColisao()
+    {
+       if (VerificaColisaoTeto)||
+	       VerificaColisaoChao ()||
+		   return true;
+		   else 
+		    return false;
+	}
+	    void Inicializar ()
+	{
+        imgCanocima.TranslationX=-largura_Vanela;
+		imgCanoBaixo.TranslationX=-LarguraJanela;
+		imgPardal.TranslationX=0;
+		imgPardal.TranslationY=0;
+		score=0;
+		GerenciarCano ();
 
 	}
+
+
+	 }
+
+	
 }
 
