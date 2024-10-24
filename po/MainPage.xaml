@@ -37,9 +37,16 @@
                      HeightRequest="350"
                      HorizontalOptions="End"/>
 
+              <Image Source="nuvem.png"
+                     x:Name="x"
+                     HeightRequest="70"
+                     Aspect="AspectFill"
+                     VerticalOptions="End"/>
+
               <!-- Frame game over -->
 
               <Frame x:Name="GameOverFrame"
+                     IsVisible="True"
                      BackgroundColor="#99000000"
                      HorizontalOptions="Fill"
                      VerticalOptions="Fill"
@@ -52,5 +59,9 @@
                      <Image Source="game.png"/>
 
               </Frame>
+              <Label Text="Pontuação: 000"
+                     VerticalOptions="Start"
+                     HorizontalOptions="End"
+                     Margin="10, 20"/>
        </Grid>
 </ContentPage>

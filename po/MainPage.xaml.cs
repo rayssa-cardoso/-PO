@@ -11,7 +11,7 @@ public partial class MainPage : ContentPage
 	bool estaMorto = true;
 	bool estaPulando = false;
 
-	int velocidade = 20;
+	int velocidade = 5;
 	int tempoPulando = 0;
 	int score = 0;
 
@@ -55,6 +55,14 @@ public partial class MainPage : ContentPage
 		estaMorto = false;
 		FlorAlto.TranslationX = 0;
 		FlorBaixo.TranslationX = 0;
+
+		FlorAlto.TranslationX = -LarguraJanela;
+		FlorBaixo.TranslationX = -LarguraJanela;
+		cuphed.TranslationX = 0;
+		cuphed.TranslationY = 0;
+		velocidade = 5;
+		score = 0;
+		GerenciarCanos();
 	}
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -75,8 +83,8 @@ public partial class MainPage : ContentPage
 			FlorAlto.TranslationX = 40;
 		}
 		score++;
-		if (score % 2 ==0)
-		velocidade++;
+		if (score % 4 == 0)
+			velocidade++;
 	}
 
 	void OnGameOverClicked(object s, TappedEventArgs e)
@@ -97,7 +105,7 @@ public partial class MainPage : ContentPage
 
 	bool VerificaColisaoChao()
 	{
-		var maxY = AlturaJanela / 2;
+		var maxY = AlturaJanela / 2 - x;
 		if (cuphed.TranslationY >= maxY)
 			return true;
 		else
@@ -106,14 +114,10 @@ public partial class MainPage : ContentPage
 
 	bool VerificaColisao()
 	{
-		if (!estaMorto)
-		{
-			if (VerificaColisaoTeto() || VerificaColisaoChao())
-			{
-				return true;
-			}
-		}
-		return false;
+		return VerificaColisaoTeto() ||
+		   	   VerificaColisaoChao() ||
+		   	   VerificaColisaoCanoCima() ||
+		   	   VerificaColisaoCanoBaixo();
 	}
 
 	void AplicaPulo()
@@ -140,39 +144,30 @@ public partial class MainPage : ContentPage
 		var posVPardal = (AlturaJanela / 2) - (cuphed.HeightRequest / 2) + cuphed.TranslationY;
 		if (posHPardal >= Math.Abs(FlorAlto.TranslationX) - FlorAlto.WidthRequest &&
 		 posHPardal >= Math.Abs(FlorAlto.TranslationX) - FlorAlto.WidthRequest &&
-		 posHPardal <= FlorAlto.HeightRequest + cuphed.TranslationY);
+		 posHPardal <= FlorAlto.HeightRequest + cuphed.TranslationY)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	bool VerificaColisaoCanoBaixo()
 	{
-         return true;
-	}
+		var posicaoHorizontalPardal = LarguraJanela - 50 - cuphed.WidthRequest / 2;
+		var posicaoVerticalPardal = (AlturaJanela / 2) + (cuphed.HeightRequest / 2) + cuphed.TranslationY;
 
-    else
-	{
-       return false; 
-	}
-		
-	}
-     bool VerificaColisao()
-    {
-       if (VerificaColisaoTeto)||
-	       VerificaColisaoChao ()||
-		   return true;
-		   else 
-		    return false;
-	}
-	    void Inicializar ()
-	{
-        imgCanocima.TranslationX=-largura_Vanela;
-		imgCanoBaixo.TranslationX=-LarguraJanela;
-		imgPardal.TranslationX=0;
-		imgPardal.TranslationY=0;
-		score=0;
-		GerenciarCano ();
+		var yMaxCano = FlorAlto.HeightRequest + FlorAlto.TranslationY + aberturaMinima;
 
+		if (
+			 posicaoHorizontalPardal >= Math.Abs(FlorAlto.TranslationX) - FlorAlto.WidthRequest &&
+			 posicaoHorizontalPardal <= Math.Abs(FlorAlto.TranslationX) + FlorAlto.WidthRequest &&
+			 posicaoVerticalPardal >= yMaxCano
+		   )
+			return true;
+		else
+			return false;
 	}
-
-
-	 }
-
-	
 }
-
