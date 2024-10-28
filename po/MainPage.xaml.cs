@@ -81,6 +81,14 @@ public partial class MainPage : ContentPage
 		{
 			FlorBaixo.TranslationX = 40;
 			FlorAlto.TranslationX = 40;
+
+			var alturaMaxima = -100;
+			var alturaMinima = -FlorBaixo.HeightRequest;
+
+			FlorAlto.TranslationY = Random.Shared.Next((int)alturaMinima, (int)alturaMaxima);
+			FlorBaixo.TranslationY = FlorAlto.TranslationY + aberturaMinima + FlorBaixo.HeightRequest;
+
+			LabelScore.Text = "Canos:" + score.ToString("D3");
 		}
 		score++;
 		if (score % 4 == 0)
@@ -105,7 +113,7 @@ public partial class MainPage : ContentPage
 
 	bool VerificaColisaoChao()
 	{
-		var maxY = AlturaJanela / 2 - x;
+		var maxY = AlturaJanela / 2;
 		if (cuphed.TranslationY >= maxY)
 			return true;
 		else

@@ -59,7 +59,8 @@
                      <Image Source="game.png"/>
 
               </Frame>
-              <Label Text="Pontuação: 000"
+              <Label x:Name="LabelScore"
+                     Text="Pontuação: 000"
                      VerticalOptions="Start"
                      HorizontalOptions="End"
                      Margin="10, 20"/>
